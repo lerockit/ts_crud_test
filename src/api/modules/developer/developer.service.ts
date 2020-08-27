@@ -1,15 +1,30 @@
 import { developerRepository } from './developer.repository';
 import { IDeveloper } from '../../interfaces/developer.interface';
 
-const getAll = () => {
-  return developerRepository.getAll();
+const index = () => {
+  return developerRepository.index();
 };
 
-const create = (developer: IDeveloper) => {
-  return developerRepository.create(developer);
+const store = (developer: IDeveloper) => {
+  return developerRepository.store(developer);
+};
+
+const update = (developerId: string, developerData: IDeveloper) => {
+  return developerRepository.update(developerId, developerData);
+};
+
+const show = (developerId: string) => {
+  return developerRepository.show(developerId);
+};
+
+const remove = (developerId: string) => {
+  return developerRepository.remove(developerId);
 };
 
 export const developerService = {
-  getAll,
-  create,
+  index,
+  store,
+  update,
+  show,
+  remove,
 };

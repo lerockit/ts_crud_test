@@ -1,15 +1,32 @@
 import { developerModel } from './models/developer.schema';
 import { IDeveloper } from '../../interfaces/developer.interface';
 
-const getAll = () => {
+const index = () => {
   return developerModel.find();
 };
 
-const create = (developer: IDeveloper) => {
+const store = (developer: IDeveloper) => {
   return developerModel.create(developer);
 };
 
+const update = (developerId: string, developerData: IDeveloper) => {
+  return developerModel.findOneAndUpdate({ _id: developerId }, developerData, {
+    new: true,
+  });
+};
+
+const show = (developerId: string) => {
+  return developerModel.findById(developerId);
+};
+
+const remove = (developerId: string) => {
+  return developerModel.findByIdAndDelete(developerId);
+};
+
 export const developerRepository = {
-  getAll,
-  create,
+  index,
+  store,
+  update,
+  show,
+  remove,
 };
